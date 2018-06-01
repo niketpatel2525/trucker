@@ -2,11 +2,11 @@ package io.ennate.trucker.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Vehicle {
@@ -24,7 +24,12 @@ public class Vehicle {
     @CreationTimestamp
     private LocalDateTime lastServiceDate;
 
+
     public Vehicle() {
+    }
+
+    public Vehicle(String vin) {
+        this.vin = vin;
     }
 
     public String getVin() {
@@ -82,7 +87,6 @@ public class Vehicle {
     public void setLastServiceDate(LocalDateTime lastServiceDate) {
         this.lastServiceDate = lastServiceDate;
     }
-
 
 
     @Override

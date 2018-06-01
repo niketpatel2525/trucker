@@ -17,14 +17,6 @@ public class VehicleServiceImp implements VehicleService {
     @Autowired
     VehicleRepository repository;
 
-//    @Transactional
-//    public Vehicle create(Vehicle vehicle) {
-//        Optional<Vehicle> vehicleExist = repository.findByVin(vehicle.getVin());
-//        if (vehicleExist.isPresent()) {
-//            throw new BadRequestException("Vehicle with VIN:#" + vehicle.getVin() + " is present in the database.");
-//        }
-//        return repository.save(vehicle);
-//    }
 
     @Transactional
     public List<Vehicle> create(Iterable<Vehicle> vehicles) {
