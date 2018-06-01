@@ -21,6 +21,9 @@ public class Vehicle {
     private int readlineRpm;
     private int maxFuelVolume;
 
+//    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "vehicle", fetch = FetchType.EAGER)
+//    List<Reading> readings = new ArrayList<>();
+
     @CreationTimestamp
     private LocalDateTime lastServiceDate;
 
@@ -31,6 +34,14 @@ public class Vehicle {
     public Vehicle(String vin) {
         this.vin = vin;
     }
+
+//    public List<Reading> getReadings() {
+//        return readings;
+//    }
+//
+//    public void setReadings(List<Reading> readings) {
+//        this.readings = readings;
+//    }
 
     public String getVin() {
         return vin;

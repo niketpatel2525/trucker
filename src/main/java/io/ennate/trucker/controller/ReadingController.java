@@ -16,8 +16,6 @@ public class ReadingController {
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Reading create(@RequestBody Reading reading) {
-//        System.out.println("VIN:#");
-//        reading.setVehicle(new Vehicle(vin));
         return service.create(reading);
     }
 }

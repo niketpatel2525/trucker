@@ -1,5 +1,6 @@
 package io.ennate.trucker.entity;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -14,8 +15,7 @@ public class Reading {
     @Column(columnDefinition = "VARCHAR(36)")
     private String id;
 
-    private String vin;
-
+    @JsonSetter("vin")
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "vehicle_vin")
     private Vehicle vehicle;
@@ -40,14 +40,6 @@ public class Reading {
 
     public Reading() {
         id = UUID.randomUUID().toString();
-    }
-
-    public String getVin() {
-        return vin;
-    }
-
-    public void setVin(String vin) {
-        this.vin = vin;
     }
 
     public String getId() {
