@@ -1,7 +1,6 @@
 package io.ennate.trucker.entity;
 
 import com.fasterxml.jackson.annotation.JsonSetter;
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -39,7 +38,7 @@ public class Reading {
 
 
     public Reading() {
-        id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().toString();
     }
 
     public String getId() {

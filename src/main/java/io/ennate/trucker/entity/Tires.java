@@ -18,7 +18,7 @@ public class Tires {
 
 
     public Tires() {
-        id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().toString();
     }
 
     public String getId() {

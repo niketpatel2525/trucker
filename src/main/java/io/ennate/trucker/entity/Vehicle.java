@@ -1,5 +1,6 @@
 package io.ennate.trucker.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Vehicle {
@@ -21,27 +23,28 @@ public class Vehicle {
     private int readlineRpm;
     private int maxFuelVolume;
 
-//    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "vehicle", fetch = FetchType.EAGER)
-//    List<Reading> readings = new ArrayList<>();
-
     @CreationTimestamp
     private LocalDateTime lastServiceDate;
 
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JsonIgnore
+//    private Set<Alert> alerts;
 
     public Vehicle() {
     }
+
+//    public Set<Alert> getAlerts() {
+//        return alerts;
+//    }
+//
+//    public void setAlerts(Set<Alert> alerts) {
+//        this.alerts = alerts;
+//    }
 
     public Vehicle(String vin) {
         this.vin = vin;
     }
 
-//    public List<Reading> getReadings() {
-//        return readings;
-//    }
-//
-//    public void setReadings(List<Reading> readings) {
-//        this.readings = readings;
-//    }
 
     public String getVin() {
         return vin;

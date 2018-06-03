@@ -1,7 +1,7 @@
 package io.ennate.trucker.controller;
 
 import io.ennate.trucker.entity.Reading;
-import io.ennate.trucker.entity.Vehicle;
+import io.ennate.trucker.service.AlertService;
 import io.ennate.trucker.service.ReadingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.*;
 public class ReadingController {
     @Autowired
     private ReadingService service;
+    @Autowired
+    private AlertService alertService;
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Reading create(@RequestBody Reading reading) {
-        return service.create(reading);
+    public void create(@RequestBody Reading reading) {
+        alertService.checkForAlert(reading);
+        service.create(reading);
     }
 }

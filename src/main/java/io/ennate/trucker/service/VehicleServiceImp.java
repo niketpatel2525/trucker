@@ -32,4 +32,8 @@ public class VehicleServiceImp implements VehicleService {
 
         return result;
     }
+
+    public List<Vehicle> findAll() {
+        return (List<Vehicle>) repository.findAll();
+    }
 }

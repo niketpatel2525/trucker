@@ -21,5 +21,9 @@ public class VehicleController {
         return service.create(vehicles);
     }
 
+    @RequestMapping(method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public List<Vehicle> findAll() {
+        return service.findAll();
+    }
 
 }
