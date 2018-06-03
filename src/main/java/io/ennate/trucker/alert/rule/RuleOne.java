@@ -19,8 +19,8 @@ public class RuleOne {
     }
 
     @Action
-    public void addAlert(@Fact("alertRepository") AlertRepository alertRepository, @Fact("vehicle") Vehicle vehicle) {
-        alertRepository.save(new Alert("Engine RPM is greater than read line RPM.", Priority.HIGH, vehicle));
+    public void addAlert(@Fact("alertRepository") AlertRepository alertRepository, @Fact("vehicle") Vehicle vehicle, @Fact("reading") Reading reading) {
+        alertRepository.save(new Alert("Engine RPM is greater than read line RPM.", Priority.HIGH, vehicle, reading.getTimestamp()));
     }
 
 }

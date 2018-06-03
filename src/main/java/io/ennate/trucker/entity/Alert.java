@@ -32,6 +32,14 @@ public class Alert {
         this.vehicle = vehicle;
     }
 
+    public Alert(String message, Priority priority, Vehicle vehicle, LocalDateTime timestamp) {
+        this.id = UUID.randomUUID().toString();
+        this.message = message;
+        this.priority = priority;
+        this.vehicle = vehicle;
+        this.timestamp = timestamp;
+    }
+
     public String getId() {
         return id;
     }

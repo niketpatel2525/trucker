@@ -23,8 +23,8 @@ public class RuleThree {
     }
 
     @Action
-    public void addAlert(@Fact("alertRepository") AlertRepository alertRepository, @Fact("vehicle") Vehicle vehicle) {
-        alertRepository.save(new Alert("Tire pressure is above/below the limits.", Priority.LOW, vehicle));
+    public void addAlert(@Fact("alertRepository") AlertRepository alertRepository, @Fact("vehicle") Vehicle vehicle, @Fact("reading") Reading reading) {
+        alertRepository.save(new Alert("Tire pressure is above/below the limits.", Priority.LOW, vehicle, reading.getTimestamp()));
     }
 
 

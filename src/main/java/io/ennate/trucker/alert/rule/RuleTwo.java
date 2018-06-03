@@ -19,7 +19,7 @@ public class RuleTwo {
     }
 
     @Action
-    public void addAlert(@Fact("alertRepository") AlertRepository alertRepository, @Fact("vehicle") Vehicle vehicle) {
-        alertRepository.save(new Alert("Fuel volume is less than 10% of max fuel capacity.", Priority.MEDIUM, vehicle));
+    public void addAlert(@Fact("alertRepository") AlertRepository alertRepository, @Fact("vehicle") Vehicle vehicle, @Fact("reading") Reading reading) {
+        alertRepository.save(new Alert("Fuel volume is less than 10% of max fuel capacity.", Priority.MEDIUM, vehicle, reading.getTimestamp()));
     }
 }

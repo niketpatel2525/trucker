@@ -19,8 +19,8 @@ public class RuleFour {
     }
 
     @Action
-    public void addAlert(@Fact("alertRepository") AlertRepository alertRepository, @Fact("vehicle") Vehicle vehicle) {
-        alertRepository.save(new Alert("EngineCoolant low or checkEngineLightOn.", Priority.LOW, vehicle));
+    public void addAlert(@Fact("alertRepository") AlertRepository alertRepository, @Fact("vehicle") Vehicle vehicle, @Fact("reading") Reading reading) {
+        alertRepository.save(new Alert("EngineCoolant low or checkEngineLightOn.", Priority.LOW, vehicle, reading.getTimestamp()));
     }
 
 
