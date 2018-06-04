@@ -16,7 +16,7 @@ import java.util.Map;
 @Repository
 public interface ReadingRepository extends CrudRepository<Reading, String> {
 
-    @Query("SELECT timestamp as Time,longitude as Longitude, latitude as Latitude from Reading r where r.timestamp between :from  and :to and r.vehicle = :vehicle")
+    @Query("SELECT timestamp as time,longitude as longitude, latitude as latitude from Reading r where r.timestamp between :from  and :to and r.vehicle = :vehicle")
     List<Map<String, String>> findLocationByVehicle(@Param("from") @CreationTimestamp LocalDateTime from, @Param("to") @CreationTimestamp LocalDateTime to, @Param("vehicle") Vehicle vehicle);
 
 }

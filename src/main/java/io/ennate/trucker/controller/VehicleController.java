@@ -1,11 +1,13 @@
 package io.ennate.trucker.controller;
 
 import io.ennate.trucker.entity.Alert;
+import io.ennate.trucker.custom_output.CustomOutputHighAlertsByVehicle;
 import io.ennate.trucker.entity.Vehicle;
 import io.ennate.trucker.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +42,7 @@ public class VehicleController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/all/alerts/high", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<Alert> findHighAlertForAllVehicle() {
+    public List<CustomOutputHighAlertsByVehicle> findHighAlertForAllVehicle() {
         return vehicleService.findHighAlertForAllVehicle();
     }
 }

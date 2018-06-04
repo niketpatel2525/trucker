@@ -1,8 +1,8 @@
 package io.ennate.trucker.service;
 
 import io.ennate.trucker.entity.Alert;
+import io.ennate.trucker.custom_output.CustomOutputHighAlertsByVehicle;
 import io.ennate.trucker.entity.Vehicle;
-import io.ennate.trucker.exception.BadRequestException;
 import io.ennate.trucker.exception.VehicleNotFoundException;
 import io.ennate.trucker.repository.AlertRepository;
 import io.ennate.trucker.repository.ReadingRepository;
@@ -12,10 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class VehicleServiceImp implements VehicleService {
@@ -69,8 +66,16 @@ public class VehicleServiceImp implements VehicleService {
     }
 
     @Override
-    public List<Alert> findHighAlertForAllVehicle() {
+    public List<CustomOutputHighAlertsByVehicle> findHighAlertForAllVehicle() {
+        List<CustomOutputHighAlertsByVehicle> result = new LinkedList<>();
+        List<Vehicle> listOfVehicle = alertRepository.findDistictVehicle();
         LocalDateTime current = LocalDateTime.now();
-        return alertRepository.findHighAlertForAllVehicle(current.minusHours(2), current);
+        for (Vehicle v : listOfVehicle) {
+            CustomOutputHighAlertsByVehicle data = new CustomOutputHighAlertsByVehicle();
+            data.setVin(v.getVin());
+            data.setAlerts(alertRepository.findHighAlertForAllVehicle(current.minusHours(2), current, v));
+            result.add(data);
+        }
+        return result;
     }
 }
